@@ -245,9 +245,6 @@ cdef class _ndarray_base:
 
     @property
     def __cuda_array_interface__(self):
-        if runtime._is_hip_environment:
-            raise AttributeError(
-                'HIP/ROCm does not support cuda array interface')
         cdef dict desc = {
             'shape': self.shape,
             'typestr': self.dtype.str,
